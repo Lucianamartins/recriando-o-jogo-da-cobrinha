@@ -40,8 +40,24 @@ function criarCobrinha() {
  function drawfood(change) {
 
     if(change) {
-        food.x = parseInt(Math.random() * 15 + 1) * box;
-        food.y = parseInt(Math.random() * 15 + 1) * box;
+
+        let newX, newY;
+
+        /* enquanto a comida estiver sendo gerada em uma coordenada ocupada
+           pela cobra, ela continuará sendo gerada aleatóriamente até obter
+           uma posição livre.
+        */
+
+        do {
+
+            newX = parseInt(Math.random() * 15 + 1) * box;
+            newY = parseInt(Math.random() * 15 + 1) * box;
+
+        }while(snake.some(piece => piece.x == newX && piece.y == newY));
+
+        food.x = newX;
+        food.y = newY;
+
     }
 
     context.fillStyle = "red";
@@ -66,8 +82,7 @@ function resetarJogo() {
         x: 8 * box,
         y: 8 * box
     });
-
-    direction = "right";
+    
     drawfood(true);
     jogo = null;
 
