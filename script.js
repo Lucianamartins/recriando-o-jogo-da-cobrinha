@@ -44,7 +44,7 @@ function criarCobrinha() {
         let newX, newY;
 
         /* enquanto a comida estiver sendo gerada em uma coordenada ocupada
-           pela cobra, ela continuará sendo gerada aleatóriamente até obter
+           pela cobra, ela continuará sendo gerada aleatoriamente até obter
            uma posição livre.
         */
 
