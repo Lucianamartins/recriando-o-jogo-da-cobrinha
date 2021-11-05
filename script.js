@@ -66,6 +66,7 @@ function resetarJogo() {
     jogo = null;
 
     criarBG();
+    criarCobrinha();
 
 }
 
