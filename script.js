@@ -1,14 +1,3 @@
-/*
- Bugs encontrados:
- 1) a cobra não aparece ao atravessar a parede inferior; OK
- 
- 2) as comidinhas conseguem aparecer no corpo da cobra; OK
- 
- 3) a cobra consegue andar numa pequena "margem invisível"
-    nas bordas do quadro verde antes de aparecer na parede
-    contrária;
-*/
-
 const canvas = document.getElementById("snake");
 const context = canvas.getContext("2d");
 const box = 32;
@@ -41,22 +30,12 @@ function criarCobrinha() {
 
     if(change) {
 
-        let newX, newY;
-
-        /* enquanto a comida estiver sendo gerada em uma coordenada ocupada
-           pela cobra, ela continuará sendo gerada aleatoriamente até obter
-           uma posição livre.
-        */
-
         do {
 
-            newX = parseInt(Math.random() * 15 + 1) * box;
-            newY = parseInt(Math.random() * 15 + 1) * box;
+            food.x = parseInt(Math.random() * 15 + 1) * box;
+            food.y = parseInt(Math.random() * 15 + 1) * box;
 
-        }while(snake.some(piece => piece.x == newX && piece.y == newY));
-
-        food.x = newX;
-        food.y = newY;
+        }while(snake.some(piece => piece.x == food.x && piece.y == food.y));
 
     }
 
@@ -137,5 +116,5 @@ resetarJogo();
 
 document.addEventListener('keydown', () => {
     if(!jogo)
-        jogo = setInterval(iniciarJogo, 75);    
+        jogo = setInterval(iniciarJogo, 100);    
 });
